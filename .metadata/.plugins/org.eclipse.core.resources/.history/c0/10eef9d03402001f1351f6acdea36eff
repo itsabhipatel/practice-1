@@ -1,0 +1,11 @@
+
+public class AdapterClass implements AppleCharger {
+
+	private SamsungCharger samsungCharger; 
+	@Override
+	public void chargeApple() {
+		
+		samsungCharger.chargeSamsung();
+	}
+
+}

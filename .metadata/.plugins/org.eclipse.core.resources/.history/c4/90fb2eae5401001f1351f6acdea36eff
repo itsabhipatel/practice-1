@@ -1,0 +1,74 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Car implements Cloneable
+{
+    int a;
+    int b;
+    List<Integer> list = new ArrayList<>();
+
+public void setA(int a) {
+    this.a = a;
+}
+
+public int getA() {
+    return a;
+}
+
+public void setB(int b) {
+    try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    this.b = b;
+}
+
+public int getB() {
+    return b;
+}
+
+
+public List<Integer> getList() {
+	return list;
+}
+
+public void setList() {
+	this.list.add(10);
+	this.list.add(20);
+	this.list.add(30);
+}
+
+
+@Override
+public String toString() {
+	return "Car [a=" + a + ", b=" + b + ", list=" + list + "]";
+}
+
+@Override
+protected Object clone() throws CloneNotSupportedException {
+	// TODO Auto-generated method stub
+	return super.clone();
+}
+
+
+
+}
+
+
+public class Practice {
+    public static void main(String[] args) throws CloneNotSupportedException {
+    	
+    	System.out.println("Hello");
+    	
+        Car abc = new Car();
+        abc.setA(4);
+        abc.setB(5);
+        abc.setList();
+        System.out.println(abc);
+        
+        Car abc2 = (Car) abc.clone();
+        System.out.println(abc2);
+    }
+}

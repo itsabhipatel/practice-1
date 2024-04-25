@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Splitwise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        #friends-list {
+            margin-top: 20px;
+        }
+
+        #friends-list li {
+            margin-bottom: 5px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Splitwise</h1>
+        <div class="form-group">
+            <label for="total-amount">Total Amount:</label>
+            <input type="number" id="total-amount" placeholder="Enter total amount">
+        </div>
+        <div id="friends-input">
+            <h3>Add Friends</h3>
+            <div class="form-group">
+                <label for="friend-name">Friend Name:</label>
+                <input type="text" id="friend-name" placeholder="Enter friend name">
+            </div>
+            <div class="form-group">
+                <label for="friend-amount">Amount Paid:</label>
+                <input type="number" id="friend-amount" placeholder="Enter amount paid by friend">
+            </div>
+            <button onclick="addFriend()">Add Friend</button>
+        </div>
+        <ul id="friends-list"></ul>
+        <button onclick="calculateSplit()">Calculate Split</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        var friends = [];
+
+        function addFriend() {
+            var friendName = document.getElementById("friend-name").value;
+            var friendAmount = parseFloat(document.getElementById("friend-amount").value);
+
+            friends.push({
+                name: friendName,
+                amount: friendAmount
+            });
+
+            var friendList = document.getElementById("friends-list");
+            var listItem = document.createElement("li");
+            listItem.textContent = friendName + " - $" + friendAmount.toFixed(2);
+            friendList.appendChild(listItem);
+
+            document.getElementById("friend-name").value = "";
+            document.getElementById("friend-amount").value = "";
+        }
+
+        function calculateSplit() {
+            var totalAmount = parseFloat(document.getElementById("total-amount").value);
+            var numFriends = friends.length;
+
+            var equalShare = totalAmount / numFriends;
+            var balance = {};
+
+            for (var i = 0; i < friends.length; i++) {
+                var friend = friends[i];
+                var amountOwed = equalShare - friend.amount;
+                balance[friend.name] = amountOwed;
+            }
+
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+
+            for (var friendName in balance) {
+                if (balance.hasOwnProperty(friendName)) {
+                    var amountOwed = balance[friendName];
+                    if (amountOwed > 0) {
+                        resultDiv.innerHTML += "<p>" + friendName + " owes $" + amountOwed.toFixed(2) + " to others.</p>";
+                    } else if (amountOwed < 0) {
+                        resultDiv.innerHTML += "<p>Others owe $" + Math.abs(amountOwed).toFixed(2) + " to " + friendName + ".</p>";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

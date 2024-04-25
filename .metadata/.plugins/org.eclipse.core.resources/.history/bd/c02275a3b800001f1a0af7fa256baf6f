@@ -1,0 +1,38 @@
+
+class Car
+{
+    int a;
+    int b;
+
+public void setA(int a) {
+    this.a = a;
+}
+
+public int getA() {
+    return a;
+}
+
+public void setB(int b) {
+    try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    this.b = b;
+}
+
+public int getB() {
+    return b;
+}
+}
+
+
+public class Practice {
+    public static void main(String[] args) {
+        Car abc = new Car();
+        abc.setA(4);
+        abc.setB(5);
+        System.out.println(abc);
+    }
+}
