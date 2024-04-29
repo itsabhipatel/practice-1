@@ -17,7 +17,7 @@ pipeline{
         stage("compile"){
 
           steps{
-              bat 'cd Practice/src'
+              bat 'cd /Practice/src'
               bat 'javac Practice.java'
           }
         }
