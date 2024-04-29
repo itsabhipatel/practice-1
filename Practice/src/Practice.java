@@ -157,13 +157,13 @@ public class Practice {
     	SamsungPhone samsungPhone = new SamsungPhone(samsungCharger);
     	applePhone.chargeApple();
     	samsungPhone.chargerSamsung();
-    	System.out.println("Automatic deployent when committed to github");
+    	
     	
     	
     	
     	Adapter adapter = new Adapter(samsungCharger);
     	adapter.chargeApple();
-		System.out.println("Automatic deployent when committed to github");
+    	
     	
     }
 }
