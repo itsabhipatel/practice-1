@@ -17,17 +17,18 @@ pipeline{
         stage("compile"){
 
           steps{
-              bat 'dir'
-              bat 'cd Practice/src'
+
+              dir(/Practice/src){
               bat 'javac Practice.java'
+              }
           }
         }
 
         stage("run"){
 
-            steps{
-            bat 'java Practice'
-            }
+           dir(/Practice/src){
+           bat 'java Practice'
+           }
         }
     }
 
