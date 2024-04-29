@@ -21,6 +21,8 @@ pipeline{
               dir('Practice/src'){
               bat 'javac Practice.java'
               }
+              bat 'javac Practice.java'
+
           }
         }
 
