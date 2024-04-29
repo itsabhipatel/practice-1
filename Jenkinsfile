@@ -25,11 +25,13 @@ pipeline{
         }
 
         stage("run"){
+         steps{
 
            dir('Practice/src'){
            bat 'java Practice'
            }
         }
+    }
     }
 
     post{
