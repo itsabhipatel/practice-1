@@ -18,7 +18,7 @@ pipeline{
 
           steps{
 
-              dir(/Practice/src){
+              dir('Practice/src'){
               bat 'javac Practice.java'
               }
           }
@@ -26,7 +26,7 @@ pipeline{
 
         stage("run"){
 
-           dir(/Practice/src){
+           dir('Practice/src'){
            bat 'java Practice'
            }
         }
