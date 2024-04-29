@@ -6,7 +6,7 @@ public class ApplePhone {
 	public ApplePhone(AppleCharger appleCharger) {
 		super();
 		this.appleCharger = appleCharger;
-		/*shsvhs/*
+
 	}
 	
 	public void chargeApple()
